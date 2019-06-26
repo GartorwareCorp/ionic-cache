@@ -15,7 +15,7 @@ import {
 import { Storage } from '@ionic/storage';
 
 import { of, throwError, interval } from 'rxjs';
-import { count, switchMap, take, tap } from 'rxjs/operators';
+import { count, switchMap, take } from 'rxjs/operators';
 import { CacheStorageService } from './cache-storage';
 
 function isPhantomJs() {
@@ -601,7 +601,7 @@ describe('Delayed observable caching', () => {
       .pipe(take(takeCount))
       .subscribe(
         res => {
-          if (i == 0) {
+          if (i === 0) {
             expect(res.meta.fromCache).toBe(true);
             expect(observable3.subscribe).not.toHaveBeenCalled();
           } else {
