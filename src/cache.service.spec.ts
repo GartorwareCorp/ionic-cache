@@ -14,8 +14,8 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import { Storage } from '@ionic/storage';
 
-import { of, throwError } from 'rxjs';
-import { count } from 'rxjs/operators';
+import { of, throwError, interval } from 'rxjs';
+import { count, switchMap, take, tap } from 'rxjs/operators';
 import { CacheStorageService } from './cache-storage';
 
 function isPhantomJs() {
@@ -515,6 +515,7 @@ describe('Delayed observable caching', () => {
 
   const observable = of(mockData);
   const observable2 = of(mockData2);
+  const observable3 = interval(500).pipe(switchMap(_ => of(mockData)));
 
   let service: CacheService;
 
@@ -533,6 +534,7 @@ describe('Delayed observable caching', () => {
   beforeEach(() => {
     spyOn(observable, 'subscribe').and.callThrough();
     spyOn(observable2, 'subscribe').and.callThrough();
+    spyOn(observable3, 'subscribe').and.callThrough();
   });
 
   it('should create an instance of the service', () => {
@@ -588,6 +590,33 @@ describe('Delayed observable caching', () => {
         },
         done,
         done
+      );
+  });
+
+  it('should return 4 (${takeCount}) responses (cache, server, server, server) if is NOT expired and delayType is "subscription" (async)', (done: any) => {
+    const takeCount = 4;
+    let i = 0;
+    service
+      .loadFromDelayedObservable(key, observable3, groupKey, ttl, 'subscription', 'meta')
+      .pipe(take(takeCount))
+      .subscribe(
+        res => {
+          if (i == 0) {
+            expect(res.meta.fromCache).toBe(true);
+            expect(observable3.subscribe).not.toHaveBeenCalled();
+          } else {
+            expect(res.meta && res.meta.fromCache).toBeFalsy();
+            expect(observable3.subscribe).toHaveBeenCalled();
+          }
+          i++;
+        },
+        err => {
+          done(err);
+        },
+        () => {
+          expect(i).toBe(takeCount);
+          done();
+        }
       );
   });
 

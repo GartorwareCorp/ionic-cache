@@ -358,7 +358,9 @@ export class CacheService {
         res => {
           this.saveItem(key, res, groupKey, ttl);
           observableSubject.next(res);
-          observableSubject.complete();
+          if (delayType !== 'subscription') {
+            observableSubject.complete();
+          }
         },
         err => {
           observableSubject.error(err);
@@ -377,7 +379,7 @@ export class CacheService {
         }
         observableSubject.next(data);
 
-        if (delayType === 'all') {
+        if (delayType === 'all' || delayType === 'subscription') {
           subscribeOrigin();
         } else {
           observableSubject.complete();

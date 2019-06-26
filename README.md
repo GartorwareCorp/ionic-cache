@@ -137,10 +137,19 @@ return this.cache.loadFromObservable(cacheKey, request);
 When you call this method and it will return the cached date (even if it's expired) 
 and immediately send a request to the server and then return the new data.
 
+**delayType** param controls wether a new request should be sent to the server. Possible values are:
+- `expired` (default): Request to the server should be sent only when cached data is expired.
+- `all`: Request to the server should be sent every time, wether data is expired or not. Original request observable is subscribed once and then completes.
+- `subscription`: Request to the server should be sent every time, wether data is expired or not. Subscription to the original request observable is up until the subscription to the returned observable.
+
 ```ts
 ...
     let request = this.http.get(url);
-    let delayType = 'all'; // this indicates that it should send a new request to the server every time, you can also set it to 'none' which indicates that it should only send a new request when it's expired
+    
+    // This indicates that it should send a new request to the server even if data is not expired.
+    // You can also set it to 'expired' which indicates that it should only send a new request when it's expired
+    // or 'subscription' which indicates that it should send a request and keep the subscription up
+    let delayType = 'all';
 
     let response = this.cache.loadFromDelayedObservable(cacheKey, request, groupKey, ttl, delayType);
 
