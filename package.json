@@ -14,11 +14,12 @@
     "build": "rimraf dist && ngc",
     "lint": "tslint \"src/**/*.ts\"",
     "prepublishOnly": "npm run lint && npm run build",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "publishPackage": "npm publish --access public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Nodonisko/ionic-cache.git"
+    "url": "git+https://github.com/GartorwareCorp/ionic-cache.git"
   },
   "keywords": [
     "ionic",
@@ -27,12 +28,14 @@
     "angular2"
   ],
   "author": "Daniel Suchy",
-  "contributors": ["Gartorware <gartorware@gmail.com>"],
+  "contributors": [
+    "Gartorware <gartorware@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Nodonisko/ionic-cache/issues"
+    "url": "https://github.com/GartorwareCorp/ionic-cache/issues"
   },
-  "homepage": "https://github.com/Nodonisko/ionic-cache#readme",
+  "homepage": "https://github.com/GartorwareCorp/ionic-cache#readme",
   "devDependencies": {
     "@angular/common": "^6.0.0",
     "@angular/compiler": "^6.0.0",
@@ -63,6 +66,16 @@
     "zone.js": "^0.8.11"
   },
   "peerDependencies": {
-    "@ionic/storage": "^2.1.3"
+    "@angular/common": "^6.0.0",
+    "@angular/compiler": "^6.0.0",
+    "@angular/compiler-cli": "^6.0.0",
+    "@angular/core": "^6.0.0",
+    "@angular/forms": "^6.0.0",
+    "@angular/http": "^6.0.0",
+    "@angular/platform-browser": "^6.0.0",
+    "@angular/platform-browser-dynamic": "^6.0.0",
+    "@ionic/storage": "^2.1.3",
+    "rxjs": "6.2.2",
+    "zone.js": "^0.8.11"
   }
 }

@@ -43,8 +43,9 @@ module.exports = config => {
     logLevel: config.INFO,
     autoWatch: true,
     browsers: [
-      'Chrome',
-      // 'PhantomJS'
+      //'Chrome',
+      // 'PhantomJS',
+      'Chromium'
     ],
     singleRun: false,
     client: {
