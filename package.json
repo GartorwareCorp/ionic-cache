@@ -1,5 +1,5 @@
 {
-  "name": "ionic-cache",
+  "name": "@gartorware/ionic-cache",
   "version": "4.0.1",
   "description": "Ionic cache service - cache request, data, promises etc.",
   "main": "dist/index.js",
@@ -27,6 +27,7 @@
     "angular2"
   ],
   "author": "Daniel Suchy",
+  "contributors": ["Gartorware <gartorware@gmail.com>"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Nodonisko/ionic-cache/issues"
