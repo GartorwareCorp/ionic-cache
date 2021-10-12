@@ -1,31 +1,24 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "compilerOptions": {
-    "rootDir": "src",
-    "module": "esnext",
-    "target": "es5",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "inlineSources": true,
-    "declaration": true,
-    "noImplicitAny": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": [
-      "dom",
-      "es2015"
-    ],
-    "outDir": "dist"
-  },
-  "include": [
-    "src/index.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictMetadataEmit": false,
-    "skipTemplateCodegen": true,
-    "debug": false
-  }
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "paths": {
+            "ionic-cache": ["dist/ionic-cache/ionic-cache", "dist/ionic-cache"]
+        },
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "importHelpers": true,
+        "esModuleInterop": true,
+        "target": "es2015",
+        "module": "es2020",
+        "lib": ["es2018", "dom"]
+    },
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false
+    }
 }

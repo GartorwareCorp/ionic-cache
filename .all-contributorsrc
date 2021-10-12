@@ -1,0 +1,74 @@
+{
+  "projectName": "ionic-cache",
+  "projectOwner": "Nodonisko",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "Nodonisko",
+      "name": "Daniel Suchý",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5837757?v=4",
+      "profile": "https://danielsuchy.cz/",
+      "contributions": [
+        "ideas",
+        "doc",
+        "code",
+        "review"
+      ]
+    },
+    {
+      "login": "WillPoulson",
+      "name": "Will Poulson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12980659?v=4",
+      "profile": "https://willpoulson.co.uk/",
+      "contributions": [
+        "doc",
+        "code",
+        "review"
+      ]
+    },
+    {
+      "login": "ihadeed",
+      "name": "Ibby Hadeed",
+      "avatar_url": "https://avatars.githubusercontent.com/u/13794420?v=4",
+      "profile": "https://zyramedia.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "darthdie",
+      "name": "Bowser",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4060546?v=4",
+      "profile": "https://github.com/darthdie",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vojtatranta",
+      "name": "Vojtěch Tranta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4154045?v=4",
+      "profile": "https://github.com/vojtatranta",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "bpfrare",
+      "name": "Bruno Frare",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1761802?v=4",
+      "profile": "https://github.com/bpfrare",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}

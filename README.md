@@ -4,37 +4,34 @@ Ionic cache service that can cache almost everything. **It caches requests, obse
 It can be used separatelety in Angular 2 application.
 
 Key features:
-+ Request caching
-+ Delayed observable caching (see docs for more info)
-+ Don't invalidate cache if is browser offline
-+ Set and invalidate groups of entries
-+ Supports IndexedDB, SQLite (Cordova), WebSQL via Ionic Storage
+
+-   Request caching
+-   Delayed observable caching (see docs for more info)
+-   Don't invalidate cache if is browser offline
+-   Set and invalidate groups of entries
+-   Supports IndexedDB, SQLite (Cordova), WebSQL via Ionic Storage
 
 Please report all bugs to bug report or fix it and send pull request :)
-
-#### Big thanks to all contributors for help:
-+ Special thanks to [ihadeed](https://github.com/ihadeed)
-+ [imatefx](https://github.com/imatefx)
-+ [Vojta Tranta](https://github.com/vojtatranta)
 
 ## Install
 
 Via NPM:
 
 ```bash
-npm install ionic-cache @ionic/storage --save
+npm install ionic-cache @ionic/storage-angular --save
 ```
 
 or Yarn:
+
 ```bash
-yarn add ionic-cache @ionic/storage
+yarn add ionic-cache @ionic/storage-angular
 ```
 
 You can optionally add [Cordova SQLite](https://ionicframework.com/docs/native/sqlite/).
 
 And inject service to your app:
 
-*app.module.ts*
+_app.module.ts_
 
 ```ts
 import { CacheModule } from "ionic-cache";
@@ -47,7 +44,7 @@ import { CacheModule } from "ionic-cache";
 })
 ```
 
-*app.component.ts*
+_app.component.ts_
 
 ```ts
 import { CacheService } from "ionic-cache";
@@ -119,7 +116,7 @@ return this.cache.loadFromObservable(cacheKey, request).pipe(map(res => res.body
 
 #### Cache with custom Observable operators
 
-`loadFromObservable` accepts an Observable and returns an Observable, so you are free to use all of the Observable operators. 
+`loadFromObservable` accepts an Observable and returns an Observable, so you are free to use all of the Observable operators.
 For example error handling (on error, retry request every 6 seconds if fails):
 
 ```ts
@@ -134,7 +131,7 @@ return this.cache.loadFromObservable(cacheKey, request);
 #### Delayed observable caching
 
 `loadFromDelayedObservable` shows off the full power of observables.
-When you call this method and it will return the cached date (even if it's expired) 
+When you call this method and it will return the cached data (even if it's expired)
 and immediately send a request to the server and then return the new data.
 
 **delayType** param controls wether a new request should be sent to the server. Possible values are:
@@ -260,6 +257,7 @@ let item = await this.cache.getRawItem(key);
 ```
 
 There's also the `getRawItems` method, which returns an array of the raw cached items.
+
 ```ts
 ...
 let rawItems = await this.cache.getRawItems();
@@ -347,3 +345,33 @@ You can also disable invalidating cached items when the device is offline.
 ```ts
 this.cache.setOfflineInvalidate(false);
 ```
+
+## Contributors ✨
+
+#### Maintainers:
+
+-   [Will Poulson](https://github.com/WillPoulson)
+-   [Daniel Suchy](https://github.com/Nodonisko)
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://danielsuchy.cz/"><img src="https://avatars.githubusercontent.com/u/5837757?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Suchý</b></sub></a><br /><a href="#ideas-Nodonisko" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/Nodonisko/ionic-cache/commits?author=Nodonisko" title="Documentation">📖</a> <a href="https://github.com/Nodonisko/ionic-cache/commits?author=Nodonisko" title="Code">💻</a> <a href="https://github.com/Nodonisko/ionic-cache/pulls?q=is%3Apr+reviewed-by%3ANodonisko" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://willpoulson.co.uk/"><img src="https://avatars.githubusercontent.com/u/12980659?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Will Poulson</b></sub></a><br /><a href="https://github.com/Nodonisko/ionic-cache/commits?author=WillPoulson" title="Documentation">📖</a> <a href="https://github.com/Nodonisko/ionic-cache/commits?author=WillPoulson" title="Code">💻</a> <a href="https://github.com/Nodonisko/ionic-cache/pulls?q=is%3Apr+reviewed-by%3AWillPoulson" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://zyramedia.com/"><img src="https://avatars.githubusercontent.com/u/13794420?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ibby Hadeed</b></sub></a><br /><a href="https://github.com/Nodonisko/ionic-cache/commits?author=ihadeed" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/darthdie"><img src="https://avatars.githubusercontent.com/u/4060546?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bowser</b></sub></a><br /><a href="https://github.com/Nodonisko/ionic-cache/commits?author=darthdie" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/vojtatranta"><img src="https://avatars.githubusercontent.com/u/4154045?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vojtěch Tranta</b></sub></a><br /><a href="https://github.com/Nodonisko/ionic-cache/commits?author=vojtatranta" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/bpfrare"><img src="https://avatars.githubusercontent.com/u/1761802?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bruno Frare</b></sub></a><br /><a href="https://github.com/Nodonisko/ionic-cache/commits?author=bpfrare" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

@@ -1,0 +1,61 @@
+version: 2.1
+
+jobs:
+    install-dependencies:
+        docker:
+            - image: 'circleci/node:14.16-browsers'
+        steps:
+            - checkout
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package-lock.json" }}
+                      - v1-dependencies-
+            - run:
+                  name: Installing dependencies
+                  command: npm install
+            - save_cache:
+                  key: v1-dependencies-{{ checksum "package-lock.json" }}
+                  paths:
+                      - node_modules
+
+    test:
+        docker:
+            - image: 'circleci/node:14.16-browsers'
+        steps:
+            - checkout
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package-lock.json" }}
+                      - v1-dependencies-
+            - run:
+                  command: npm run lint
+            - run:
+                  command: npm run test -- --ci
+
+    build:
+        docker:
+            - image: 'circleci/node:14.16-browsers'
+        steps:
+            - checkout
+            - restore_cache:
+                  keys:
+                      - v1-dependencies-{{ checksum "package-lock.json" }}
+                      - v1-dependencies-
+            - run:
+                  command: |
+                      npm run build:prod
+            - persist_to_workspace:
+                  root: .
+                  paths:
+                      - dist
+
+workflows:
+    build_and_test:
+        jobs:
+            - install-dependencies
+            - test:
+                  requires:
+                      - install-dependencies
+            - build:
+                  requires:
+                      - install-dependencies
